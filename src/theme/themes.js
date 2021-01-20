@@ -1,0 +1,146 @@
+import { colors } from "@material-ui/core";
+import { lighten } from "polished";
+const white = "#FFFFFF";
+const black = "#000000";
+
+export const selectTheme = {
+  lightTheme: {
+    black,
+    white,
+    appBarColor: {
+      borderLeftColor: black,
+      primaryColor: black,
+      secondaryColor: "#607D8B",
+      lightColor: "#BDBDBD",
+      secondaryLigthColor: "#B0BEC5",
+      backgroundDefault: "#F5F5F5",
+    },
+    generalColor: {
+      light: colors.grey[50],
+      surface: colors.grey[100],
+      surMedium: "#ebebeb",
+      medium: colors.grey[200],
+      medMain: colors.grey[300],
+      main: colors.grey[500],
+      text: "#757575",
+      dark: colors.grey[800],
+      darkest: colors.grey[900],
+    },
+    blueColor: {
+      light: "#E3F2FD",
+      main: "#3F51B5",
+      dark: "#283593",
+    },
+    primary: {
+      ...colors.deepOrange,
+      lighten: lighten(0.2, colors.deepOrange[300]),
+      light: lighten(0.25, colors.deepOrange[300]),
+      main: colors.deepOrange[300],
+      dark: "#FF5722",
+      contrastText: white,
+    },
+    secondary: {
+      light: colors.blue[50],
+      main: "#3F51B5",
+      dark: "#283593",
+      contrastText: white,
+    },
+    status: {
+      draft: "#BDBDBD",
+      error: "#F44336",
+      warning: "#FFC422",
+      processing: "#4CAF50",
+      refused: "#673AB7",
+      readyToship: colors.deepOrange[300],
+    },
+    error: colors.red,
+    warning: colors.amber,
+    success: colors.green,
+    background: {
+      paper: white,
+      default: "#FAFAFA",
+    },
+    datePickerSelectColor: {
+      light: "#FBE9E7",
+      main: colors.deepOrange[100],
+    },
+    text: {
+      primary: "rgba(0, 0, 0, 0.87)",
+      secondary: "rgba(0, 0, 0, 0.54)",
+      disabled: "rgba(0, 0, 0, 0.38)",
+      hint: "rgba(0, 0, 0, 0.38)",
+      white: white,
+      inherit: "#757575",
+    },
+  },
+
+  darkTheme: {
+    black,
+    white,
+    appBarColor: {
+      borderLeftColor: "#FF5722",
+      primaryColor: white,
+      secondaryColor: "#B0BEC5",
+      lightColor: "#607D8B",
+      secondaryLigthColor: "#B0BEC5",
+      backgroundDefault: "#263238",
+    },
+    generalColor: {
+      light: colors.blueGrey[50],
+      surface: colors.blueGrey[100],
+      surMedium: colors.blueGrey.A100,
+      medium: colors.blueGrey[200],
+      medMain: colors.blueGrey.A200,
+      main: colors.blueGrey[500],
+      text: "#607D8B",
+      dark: colors.blueGrey[800],
+      darkest: colors.blueGrey[900],
+    },
+    blueColor: {
+      light: "#E3F2FD",
+      main: "#2196F3",
+      dark: "#0D47A1",
+    },
+    primary: {
+      ...colors.deepOrange,
+      lighten: lighten(0.2, colors.deepOrange[300]),
+      light: lighten(0.25, colors.deepOrange[300]),
+      main: colors.deepOrange[300],
+      dark: "#FF5722",
+      contrastText: white,
+    },
+    secondary: {
+      light: colors.blue[50],
+      main: colors.blue[500],
+      dark: colors.blue[900],
+      contrastText: white,
+    },
+    status: {
+      draft: "#BDBDBD",
+      error: "#F44336",
+      warning: "#FFC422",
+      processing: "#4CAF50",
+      refused: "#673AB7",
+      readyToship: "#fe5722",
+    },
+    error: colors.red,
+    warning: colors.amber,
+    success: colors.green,
+    background: {
+      paper: white,
+      default: colors.blueGrey[50],
+    },
+    datePickerSelectColor: {
+      light: "#FBE9E7",
+      main: colors.deepOrange[100],
+    },
+    text: {
+      primary: "rgba(0, 0, 0, 0.87)",
+      secondary: "rgba(0, 0, 0, 0.54)",
+      disabled: "rgba(0, 0, 0, 0.38)",
+      hint: "rgba(0, 0, 0, 0.38)",
+      white: white,
+      inherit: "#757575",
+    },
+  },
+};
