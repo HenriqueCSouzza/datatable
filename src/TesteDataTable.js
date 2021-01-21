@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { Formik, Field, Form } from "formik";
 import DataTable from "./components/DataTable";
-import DataTableSkeleton from "./skeletons/DataTableSkeleton";
 import { orders } from "./orderListMock";
 function OrderDataTable() {
   const [loading] = useState(false);
@@ -12,29 +12,37 @@ function OrderDataTable() {
     {
       label: "#",
       field: "id",
-      mutator: (value, values) => <div>{value}</div>,
+      mutator: (value, values, index, field, fieldValue) => (
+        <Field id={String(value)} name={String(values[field])} />
+      ),
     },
     {
       label: "Data",
       field: "createdAt",
-      mutator: (value) => value,
+      mutator: (value, values, index, field, fieldValue) => (
+        <Field id={String(value)} name={String(values[field])} />
+      ),
     },
     {
       label: "Identificador",
       field: "name",
-      mutator: (value, values) =>
-        typeof values.name === "undefined" ? "" : value,
+      mutator: (value, values, index, field, fieldValue) => (
+        <Field id={String(value)} name={String(values[field])} />
+      ),
     },
     {
       label: "Pagamento",
       field: "invoiceType",
-      mutator: (value, values) =>
-        value === "pia" ? "À vista" : `À prazo ${values.paymentTerms} dias`,
+      mutator: (value, values, index, field, fieldValue) => (
+        <Field id={String(value)} name={String(values[field])} />
+      ),
     },
     {
       label: "Total",
       field: "total",
-      mutator: (value) => value,
+      mutator: (value, values, index, field, fieldValue) => (
+        <Field id={String(value)} name={String(values[field])} />
+      ),
     },
   ];
 
@@ -43,7 +51,7 @@ function OrderDataTable() {
       label: "Exportar",
       key: "export",
       action: async (items) => {
-        alert(items);
+        console.log(items);
       },
       isAvailable: (items) =>
         items.filter(
@@ -57,23 +65,30 @@ function OrderDataTable() {
     },
   ];
 
-  if (loading) {
-    return <DataTableSkeleton />;
-  } else {
-    return (
-      <DataTable
-        checkbox={true}
-        keys={defaultKeys}
-        allItems={data.allItems}
-        items={data.results}
-        meta={data.meta}
-        massActions={massActions}
-        onRowClick={onRowClick}
-        showNavNumbers={false}
-        showPagination={false}
-      />
-    );
-  }
+  return (
+    <>
+      <Formik initialValues={data}>
+        {({ status, values, isSubmitting, setFieldValue }) => {
+          console.log(values);
+          return (
+            <Form>
+              <DataTable
+                checkbox={true}
+                keys={defaultKeys}
+                allItems={values.allItems}
+                items={values.results}
+                meta={values.meta}
+                massActions={massActions}
+                // onRowClick={onRowClick}
+                showNavNumbers={false}
+                showPagination={false}
+              />
+            </Form>
+          );
+        }}
+      </Formik>
+    </>
+  );
 }
 
 export default OrderDataTable;

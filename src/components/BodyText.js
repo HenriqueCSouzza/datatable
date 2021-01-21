@@ -1,6 +1,6 @@
+import React from "react";
 import Box from "@material-ui/core/Box";
 import PropTypes from "prop-types";
-import React from "react";
 import Typography from "@material-ui/core/Typography";
 import spacingProps from "../utils/spacing-props";
 import { useTheme } from "@material-ui/core/styles";

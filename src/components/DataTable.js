@@ -270,10 +270,10 @@ function DataTable({
             </TableHead>
           )}
           <TableBody className={classes.tableBody}>
-            {items.map((item, i) => {
+            {items.map((item, index) => {
               return (
                 <TableRow
-                  key={i}
+                  key={index}
                   className={clsx({
                     [classes.clickableRow]: typeof onRowClick !== "undefined",
                   })}
@@ -303,7 +303,13 @@ function DataTable({
                           : "";
                     }
                     if (typeof key.mutator !== "undefined") {
-                      value = key.mutator(value, item);
+                      value = key.mutator(
+                        value,
+                        item,
+                        index,
+                        key.field,
+                        item[key.field]
+                      );
                     }
                     return (
                       <TableCell
