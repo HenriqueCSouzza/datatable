@@ -1,5 +1,6 @@
 import palette from "./palette";
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   htmlFontSize: 16,
   fontFamily: "Roboto, sans-serif",
