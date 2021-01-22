@@ -1,9 +1,9 @@
-import TesteDataTable from "./TesteDataTable";
+import FormikDataTable from "./FormikDataTable";
 
 function App() {
   return (
     <div style={{ width: "80%" }}>
-      <TesteDataTable />
+      <FormikDataTable />
     </div>
   );
 }

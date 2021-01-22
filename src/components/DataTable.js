@@ -20,7 +20,6 @@ import BodyText from "./BodyText";
 import PaginationMeta from "./PaginationMeta";
 import { makeStyles } from "@material-ui/core/styles";
 import { darken } from "polished";
-import withConfirm from "../hocs/withConfirm";
 import TablePaginationStyled from "./TablePaginationStyled";
 const useStyles = makeStyles((theme) => ({
   checkbox: {
@@ -66,6 +65,7 @@ function DataTable({
   size = "medium",
   toolBar = true,
   confirm,
+  setFieldValue,
   ...props
 }) {
   const classes = useStyles();
@@ -288,7 +288,7 @@ function DataTable({
                       />
                     </TableCell>
                   )}
-                  {keys.map((key, i) => {
+                  {keys.map((key, columnIndex) => {
                     let value;
                     if (key.field.split(".").length > 1) {
                       let fields = key.field.split(".");
@@ -307,13 +307,15 @@ function DataTable({
                         value,
                         item,
                         index,
+                        columnIndex,
                         key.field,
-                        item[key.field]
+                        item[key.field],
+                        setFieldValue
                       );
                     }
                     return (
                       <TableCell
-                        key={i}
+                        key={columnIndex}
                         width={key.width}
                         className={changeOnRowClick(onRowClick, classes)}
                         onClick={
@@ -396,4 +398,4 @@ DataTable.propTypes = {
   toolBar: PropTypes.bool,
 };
 
-export default withConfirm(DataTable);
+export default DataTable;
