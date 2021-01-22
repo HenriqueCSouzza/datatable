@@ -9,6 +9,7 @@ const checkLocalStorage = () => {
   }
 };
 const theme = checkLocalStorage();
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   ...selectTheme[theme],
 };
